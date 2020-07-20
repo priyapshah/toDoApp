@@ -28,11 +28,11 @@ export const useTasks = selectedProject => {
 
             setTasks(
                 selectedProject === 'THIS_WEEK'
-                ? newTasks.filter(
-                    task => moment(task.date, 'DD-MM-YYY').diff(moment(), 'days') <= 7 &&
-                    task.archived != true
-                )
-                : newTasks.filter(task => task.archived !== true)
+                    ? newTasks.filter(
+                        task => moment(task.date, 'DD-MM-YYY').diff(moment(), 'days') <= 7 &&
+                            task.archived != true
+                    )
+                    : newTasks.filter(task => task.archived !== true)
             );
 
             setArchivedTasks(newTasks.filter(task => task.archived === true));
@@ -42,4 +42,29 @@ export const useTasks = selectedProject => {
     }, [selectedProject]); //empty array only runs once
 
     return { tasks, archivedTasks };
+};
+
+export const useProjects = () => {
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        firebase
+            .firestore()
+            .collection('projects')
+            .where('userID', '==', '1')
+            .orderBy('projectID')
+            .get()
+            .then(snapshot => {
+                const allProjects = snapshot.docs.map(project => ({
+                    ...project.data(),
+                    docId: project.id,
+                }));
+                if (JSON.stringify(allProjects !== JSON.stringify(projects))) {
+                    setProjects(allProjects);
+                }
+            });
+    }, [projects]);
+
+    return { projects, setProjects };
+    
 };
