@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import { Projects } from '../Projects';
 import { useSelectedProjectValue } from '../../context';
-
+import { AddProject } from '../AddProject';
 
 export const Sidebar = () => {
   const { setSelectedProject } = useSelectedProjectValue();
@@ -18,9 +18,11 @@ export const Sidebar = () => {
     <div className="sidebar" data-testid="sidebar">
       <ul className="sidebar__generic">
         <li
+          data-testid="inbox"
           className={active === 'inbox' ? 'active' : undefined}
         >
           <div
+            data-testid="inbox-action"
             aria-label="Show inbox tasks"
             tabIndex={0}
             role="button"
@@ -42,6 +44,7 @@ export const Sidebar = () => {
           </div>
         </li>
         <li
+          data-testid="today"
           className={active === 'today' ? 'active' : undefined}
         >
           <div
@@ -71,6 +74,7 @@ export const Sidebar = () => {
           className={active === 'next_7' ? 'active' : undefined}
         >
           <div
+            data-testid="next_7-action"
             aria-label="Show tasks for the next 7 days"
             tabIndex={0}
             role="button"
@@ -112,7 +116,7 @@ export const Sidebar = () => {
 
       <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
 
-      {showProjects}
+      {showProjects && <AddProject />}
     </div>
   );
 };
