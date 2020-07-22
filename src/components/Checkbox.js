@@ -24,8 +24,3 @@ export const Checkbox = ({ id, taskDesc }) => {
     </div>
   );
 };
-
-Checkbox.propTypes = {
-  id: PropTypes.string.isRequired,
-  taskDesc: PropTypes.string.isRequired,
-};
