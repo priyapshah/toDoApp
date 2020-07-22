@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPizzaSlice } from 'react-icons/fa';
+import { FaMoon } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { AddTask } from '../AddTask';
 
@@ -10,6 +10,9 @@ export const Header = ({ darkMode, setDarkMode }) => {
   return (
     <header className="header">
       <nav>
+      <div className="title">
+        <h2>To Do App</h2>
+        </div>
         <div className="settings">
           <ul>
             <li className="settings__add">
@@ -30,7 +33,7 @@ export const Header = ({ darkMode, setDarkMode }) => {
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
               >
-                <FaPizzaSlice />
+                <FaMoon />
               </button>
             </li>
           </ul>
