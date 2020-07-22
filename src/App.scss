@@ -177,13 +177,10 @@ header {
     }
 
     div {
-      &.logo {
+      h2 {
+        color: white;
         padding-left: 8px;
         grid-area: 1 / 1;
-
-        img {
-          width: 24px;
-        }
 
       }
 
