@@ -1,8 +1,9 @@
 # To Do App
-
 This project is a To-Do List App created in order to gain more practice with React (Custom Hooks, Context). Additionally, the app relies on Firebase as the main database for projects and tasks. 
 
 Users can add Projects in the sidebar, or use quick-add options in the header. When adding a task, select the time-frame and project to add the task to. Be sure to try dark mode by clicking the moon in the top right. 
+
+![App Screenshot](ToDoPic.ong)
 
 ## How to run: 
 
