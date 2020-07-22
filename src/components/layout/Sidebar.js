@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Projects} from '../Projects';
+import { useSelectedProjectValue } from '../../context';
 
-export const Sidebar = () => (
+export const Sidebar = () => {
+    const { setSelectedProject } = useSelectedProjectValue;
+    const {active, setActive} = useState('inbox');
+    const {showProjects, setShowProjects} = useState(true);
+    
+    return(
     <div className="sidebar">
-        <ul className="sidebar__tabs">   {/* BEM, Block Element Modifier */}
-            <li>Inbox</li>
-            <li>Today</li>
-            <li>This Week</li>
+        <ul className="sidebar__generic">   {/* BEM, Block Element Modifier */}
+            <li className="inbox">Inbox</li>
+            <li className="today">Today</li>
+            <li className="next_7">This Week</li>
         </ul>
-        <div className="sidebar__cont">
+        <div className="sidebar__middle">
             <h2>Projects</h2>
         </div>
-        <ul className="sidebar_projects">Projects!</ul>
+
+    <ul className="sidebar__projects">{showProjects && <Projects />}</ul>
+
+        {showProjects && <Projects />}
     </div>
-);
+)};

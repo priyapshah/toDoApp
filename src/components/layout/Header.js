@@ -4,12 +4,12 @@ export const Header = () => {
     return <header className="header">
         <nav>
             <div className="logo">
-                <img src="/images/logo.png" alt="To Do List"/>
+               <h2>To Do List</h2>
             </div>
             <div className="settings">
                 <ul>
-                    <li>+</li>
-                    <li>DARK</li>
+                    <li className="settings__add">+</li>
+                    <li className="settings__darkmode">DARK</li>
                 </ul>
             </div>
         </nav>

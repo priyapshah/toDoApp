@@ -11,9 +11,9 @@ export const useTasks = selectedProject => {
         let unsubscribe = firebase
             .firestore()
             .collection('tasks')
-            .where('userID', '==', '1');
+            .where('userId', '==', '1');
         unsubscribe = selectedProject && !collatedTasksExist(selectedProject) ?
-            (unsubscribe = unsubscribe.where('projectID', '==', selectedProject))
+            (unsubscribe = unsubscribe.where('projectId', '==', selectedProject))
             : selectedProject === 'TODAY'
                 ? (unsubscribe = unsubscribe.where('date', '==', moment().format('DD/MM/YYYY')
                 ))
@@ -23,14 +23,14 @@ export const useTasks = selectedProject => {
         unsubscribe = unsubscribe.onSnapshot(snapshot => {
             const newTasks = snapshot.docs.map(task => ({
                 id: task.id,
-                ...task.date(),
+                ...task.data(),
             }));
 
             setTasks(
                 selectedProject === 'THIS_WEEK'
                     ? newTasks.filter(
                         task => moment(task.date, 'DD-MM-YYY').diff(moment(), 'days') <= 7 &&
-                            task.archived != true
+                            task.archived !== true
                     )
                     : newTasks.filter(task => task.archived !== true)
             );
@@ -51,15 +51,15 @@ export const useProjects = () => {
         firebase
             .firestore()
             .collection('projects')
-            .where('userID', '==', '1')
-            .orderBy('projectID')
+            .where('userId', '==', '1')
+            .orderBy('projectId')
             .get()
             .then(snapshot => {
                 const allProjects = snapshot.docs.map(project => ({
                     ...project.data(),
                     docId: project.id,
                 }));
-                if (JSON.stringify(allProjects !== JSON.stringify(projects))) {
+                if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
                     setProjects(allProjects);
                 }
             });
