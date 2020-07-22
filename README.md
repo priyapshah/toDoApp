@@ -2,9 +2,9 @@ This project is a To-Do List App created in order to gain more practice with Rea
 
 Users can add Projects in the sidebar, or use quick-add options in the header. When adding a task, select the time-frame and project to add the task to. Be sure to try dark mode by clicking the moon in the top right. 
 
-How to run: 
+##How to run: 
 
-### `npm start`
+ `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
