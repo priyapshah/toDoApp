@@ -22,7 +22,7 @@ export const useTasks = selectedProject => {
             '==',
             moment().format('DD/MM/YYYY')
           ))
-        : selectedProject === 'INBOX' || selectedProject === 0
+        : selectedProject === 'ALL_TASKS' || selectedProject === 0
         ? (unsubscribe = unsubscribe.where('date', '==', ''))
         : unsubscribe;
 
@@ -33,7 +33,7 @@ export const useTasks = selectedProject => {
       }));
 
       setTasks(
-        selectedProject === 'NEXT_7'
+        selectedProject === 'NEXT_WEEK'
           ? newTasks.filter(
               task =>
                 moment(task.date, 'DD-MM-YYYY').diff(moment(), 'days') <= 7 &&

@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from 'react-icons/fa';
+import { FaArrowRight, FaSun, FaRegPaperPlane } from 'react-icons/fa';
 
 export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
@@ -23,7 +23,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             role="button"
           >
             <span>
-              <FaSpaceShuttle />
+              <FaSun />
             </span>
             <span>Today</span>
           </div>
@@ -45,7 +45,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             aria-label="Select tomorrow as the task date"
           >
             <span>
-              <FaSun />
+              <FaArrowRight />
             </span>
             <span>Tomorrow</span>
           </div>
@@ -69,7 +69,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             <span>
               <FaRegPaperPlane />
             </span>
-            <span>Next week</span>
+            <span>Next Week</span>
           </div>
         </li>
       </ul>
