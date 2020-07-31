@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaMoon } from 'react-icons/fa';
-import { AddTask } from '../AddTask';
+import { AddTask } from '../tasks/AddTask';
 
 export const Header = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
