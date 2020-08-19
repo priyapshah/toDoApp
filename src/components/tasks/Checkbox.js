@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { firebase } from '../../firebase';
 
 export const Checkbox = ({ id, taskDesc }) => {
-  const archiveTask = () => {
-    firebase.firestore().collection('tasks').doc(id).update({
-      archived: true,
-    });
+  const deleteTask = () => {
+    firebase.firestore().collection('tasks').doc(id).delete();
   };
 
   return (
     <div
       className="checkbox-holder"
-      onClick={() => archiveTask()}
+      onClick={() => deleteTask()}
       onKeyDown={(e) => {
-        if (e.key === 'Enter') archiveTask();
+        if (e.key === 'Enter') deleteTask();
       }}
       aria-label={`Mark ${taskDesc} as done?`}
       role="button"
